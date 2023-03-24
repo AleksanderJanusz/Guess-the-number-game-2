@@ -1,5 +1,4 @@
 """Gues the number game. You pick number from 0 to 1000 and I will guess it"""
-from random import randint
 
 
 def _get_answer() -> int:
@@ -32,7 +31,8 @@ def main() -> None:
     print("You can answer \n1 - too small \n2 - too big \n3 - you win\n\n")
     min_ = 0
     max_ = 1000
-    guess_num = randint(min_, max_)
+    guess_num = 500
+
     while True:
 
         print(f"Your number is: {guess_num}")
@@ -45,13 +45,15 @@ def main() -> None:
         else:
             print("Wygrałem!")
             return None
-        try:
-            guess_num = randint(min_, max_)
-        except ValueError:
-            print("Do not cheat! \nTry again.")
+        if guess_num == (max_ - min_) // 2 + min_:
+            print("\nDo not cheat! \nTry again.\n")
+            print("Think about integer number from 0 to 1000.")
+            print("I will have guessed in maximum 10 tries\n")
+            print("You can answer \n1 - too small \n2 - too big \n3 - you win\n\n")
+
             min_ = 0
             max_ = 1000
-            guess_num = randint(min_, max_)
+        guess_num = (max_ - min_) // 2 + min_
 
 
 main()
